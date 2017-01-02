@@ -1,0 +1,124 @@
+/*Start Add Base Fonts for the application*/
+@font-face {
+	font-family: CompactDisplay;
+	src: url("./assets/fonts/SF-Compact-Display-Regular.otf") format("opentype");
+}
+
+@font-face {
+	font-family: CompactDisplay;
+	font-weight: bold;
+	src: url("./assets/fonts/SF-Compact-Display-Bold.otf") format("opentype");
+}
+/*End Add Base Fonts for the application*/
+body{
+	font-family: 'CompactDisplay'
+}
+.loader-container{
+	width: 100%;
+	padding-top: 15%;
+	text-align: center;
+}
+.fit-to-parent{
+	width: 100%;
+}
+.header-shout-out{
+	font-weight: bold; 
+	color: #EF4F49;
+    line-height: 20px;	
+}
+.sub-title{
+	color: #70787A;
+    font-size: 1.15rem;
+	margin-top: 10px;    
+}
+.btn-primary, .btn.btn-primary:hover, .btn.btn-primary:active, .btn.btn-primary:focus{
+	border: 2px solid #EF504A;
+	border-radius: 0px;
+	background-color: #fff;
+	color: #EF504A;
+	padding: 10px 20px;
+	font-size: 1rem;
+	box-shadow: none;
+}
+.sign-up-container{
+	margin-top: 20px;
+}
+.sign-in-text-container p{
+	color: #70787A;
+	font-size: 1rem;
+	margin-top: 10px;
+}
+.text-muted{
+	color: #70787A;
+	font-size: 1.25rem;
+}
+.signup-with-linkedin-form {
+	padding-top: 50px;
+}
+.signup-with-linkedin-form .header-subtitle{
+    display: inline-block;
+    width: 30%;	
+    padding-top: 10px;
+}
+.searchIcon{
+	width: 1.5%;
+}
+.signup-with-linkedin-form .signup-form{
+	display: inline-block;
+    width: 40%;
+    border-top: 1px solid #ECEDED;
+    padding: 40px;
+    margin-top: 10px;
+}
+.signup-with-linkedin-form .signup-form label{
+	color: #B8BBBB; 
+    font-size: 0.875rem;
+    font-weight: 400;	
+}
+.signup-with-linkedin-form .signup-form .form-control{
+    background-color: #454C50;
+    padding: 23px 10px;
+    border-radius: 3px;
+    border-color: #707579;	
+    color: #fff;
+}
+.signup-with-linkedin-form .signup-form .form-control.transparent-background{
+    background-color: #fff;
+    padding: 23px 10px;
+    border-radius: 3px;
+    border-color: #707579;	
+    color: #454C50;
+}
+.signup-with-linkedin-form .signup-form .row{
+	margin-bottom: 10px;
+}
+.signup-with-linkedin-form .signup-form #signUpBtn{
+	width: 45%;
+}
+.sign-btn-container{
+	border-top: 1px solid #ECEDED;
+	margin-top: 40px;
+    padding-top: 25px;
+}
+.thank-you-container .header-subtitle{
+    margin-top: 30px;	
+}
+/**Media Queries**/
+@media (max-width:360px)  { 
+	.header-shout-out{
+		line-height: 1.1;
+		font-size: 2rem;
+	}
+	.signup-with-linkedin-form .signup-form #signUpBtn{
+		width: 100%;
+	}
+	.searchIcon{
+		width: auto;
+	}
+	.signup-with-linkedin-form .header-subtitle{
+		width: 100%;
+	}
+	.signup-with-linkedin-form .signup-form{
+		width: 100%;
+	}
+}
