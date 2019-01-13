@@ -96,13 +96,11 @@ export class HomeComponent implements OnInit {
         }
     }
 
-    // addItem(list: string, taskName: string, taskDescription: string) {
-    //     if (list === 'todo') {
-    //         this.todo.push({ title: taskName, description: taskDescription, dateAdded: new Date().toString() });
-    //     } else {
-    //         this.done.push({ title: taskName, description: taskDescription, dateAdded: new Date().toString() });
-    //     }
-    // }
+    addItem(listIndex: string, taskName: string, taskDescription: string) {
+        if (listIndex) {
+            this.boardList[listIndex].taskArray.push({ title: taskName, description: taskDescription, dateAdded: new Date().toString() });
+        }
+    }
 
     drop(event: CdkDragDrop<TaskList[]>) {
         // first check if it was moved within the same list or moved to a different list
