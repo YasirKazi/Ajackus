@@ -96,18 +96,6 @@ export class HomeComponent implements OnInit {
         }
     }
 
-    // public todo: Task[] = [
-    //     { title: 'Get to work', description: 'testing description', dateAdded: new Date().toString() }
-    // ];
-
-    // public done: Task[] = [
-    //     { title: 'Get up', description: 'testing description', dateAdded: new Date().toString() }
-    // ];
-
-    // public cancelled: Task[] = [
-    //     { title: 'Get up', description: 'testing description', dateAdded: new Date().toString() }
-    // ];
-
     // addItem(list: string, taskName: string, taskDescription: string) {
     //     if (list === 'todo') {
     //         this.todo.push({ title: taskName, description: taskDescription, dateAdded: new Date().toString() });
