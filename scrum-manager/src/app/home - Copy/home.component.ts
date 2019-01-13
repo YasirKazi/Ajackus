@@ -9,26 +9,24 @@ import { TaskList } from '../task';
 })
 export class HomeComponent implements OnInit {
     boardList: TaskList[];
-    connectList: any;
-
     constructor() {
         this.boardList = [
             {
                 title: 'To Do',
-                listName: 'todoList',
+                listName: 'test',
                 taskArray: [
                     {
-                        title: 'test To Do',
+                        title: 'test',
                         description: 'descrptiontext',
                         dateAdded: new Date().toString()
                     },
                     {
-                        title: 'TEST 2 To Do',
+                        title: 'TEST 2',
                         description: 'descrp',
                         dateAdded: new Date().toString()
                     },
                     {
-                        title: 'TEST 3 To Do',
+                        title: 'TEST 3',
                         description: '123',
                         dateAdded: new Date().toString()
                     }
@@ -36,20 +34,20 @@ export class HomeComponent implements OnInit {
             },
             {
                 title: 'Done Already',
-                listName: 'DoneAlreadyList',
+                listName: 'test',
                 taskArray: [
                     {
-                        title: 'test Done Already',
+                        title: 'test',
                         description: 'descrptiontext',
                         dateAdded: new Date().toString()
                     },
                     {
-                        title: 'TEST 2 Done Already',
+                        title: 'TEST 2',
                         description: 'descrp',
                         dateAdded: new Date().toString()
                     },
                     {
-                        title: 'TEST 3 Done Already',
+                        title: 'TEST 3',
                         description: '123',
                         dateAdded: new Date().toString()
                     }
@@ -57,43 +55,26 @@ export class HomeComponent implements OnInit {
             },
             {
                 title: 'Halted',
-                listName: 'HaltedList',
+                listName: 'test',
                 taskArray: [
                     {
-                        title: 'test Halted',
+                        title: 'test',
                         description: 'descrptiontext',
                         dateAdded: new Date().toString()
                     },
                     {
-                        title: 'TEST 2 Halted',
+                        title: 'TEST 2',
                         description: 'descrp',
                         dateAdded: new Date().toString()
                     },
                     {
-                        title: 'TEST 3 Halted',
+                        title: 'TEST 3',
                         description: '123',
                         dateAdded: new Date().toString()
                     }
                 ]
             }
         ];
-        this.connectList = [];
-    }
-
-    public getConnectedLists(listArray: TaskList[]) {
-        const thisObj = this;
-        if (listArray) {
-            for (let i = 0; i < listArray.length; i++) {
-                thisObj.connectList.push(listArray[i].listName);
-            }
-        }
-    }
-
-    public filterListName(listArray: any, currentLisName: string) {
-        if (listArray) {
-            const returnArray = listArray.filter(word => word != currentLisName);
-            return returnArray;
-        }
     }
 
     // public todo: Task[] = [
@@ -117,17 +98,19 @@ export class HomeComponent implements OnInit {
     // }
 
     drop(event: CdkDragDrop<TaskList[]>) {
+        console.log(event);
         // first check if it was moved within the same list or moved to a different list
         if (event.previousContainer === event.container) {
             // change the items index if it was moved within the same list
             moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-        } else {
-            // remove item from the previous list and add it to the new array
-            transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
         }
+        // else {
+        //     // remove item from the previous list and add it to the new array
+        //     transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+        // }
     }
     ngOnInit() {
-        this.getConnectedLists(this.boardList);
+        console.warn(this.boardList);
     }
 
 }

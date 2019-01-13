@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 import { GenericHeaderComponent } from './generic-header/generic-header.component';
 import { HomeComponent } from './home/home.component';
 
@@ -14,7 +16,8 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
