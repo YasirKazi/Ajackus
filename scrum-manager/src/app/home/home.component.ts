@@ -10,7 +10,7 @@ import { TaskList } from '../task';
 export class HomeComponent implements OnInit {
     boardList: TaskList[];
     connectList: any;
-
+    archiveList: TaskList[];
     constructor() {
         this.boardList = [
             {
@@ -78,6 +78,11 @@ export class HomeComponent implements OnInit {
             }
         ];
         this.connectList = [];
+        this.archiveList = [{
+            title: 'Archived ',
+            listName: 'archiveList',
+            taskArray: []
+        }];
     }
 
     public getConnectedLists(listArray: TaskList[]) {
@@ -99,6 +104,7 @@ export class HomeComponent implements OnInit {
     addItem(listIndex: string, taskName: string, taskDescription: string) {
         if (listIndex) {
             this.boardList[listIndex].taskArray.push({ title: taskName, description: taskDescription, dateAdded: new Date().toString() });
+            localStorage.setItem('boardList', JSON.stringify(this.boardList));
         }
     }
 
@@ -112,7 +118,25 @@ export class HomeComponent implements OnInit {
             transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
         }
     }
+
+    archiveCard(cardIndex: any, boardListIndex: any) {
+        if ((cardIndex != null) && (boardListIndex != null)) {
+            this.archiveList[0].taskArray.push(this.boardList[boardListIndex].taskArray[cardIndex]);
+            this.boardList[boardListIndex].taskArray.splice(cardIndex, 1);
+        }
+    }
+
+    renameCard(cardIndex: any, boardListIndex: any) {
+        if ((cardIndex != null) && (boardListIndex != null)) {
+            this.archiveList[0].taskArray.push(this.boardList[boardListIndex].taskArray[cardIndex]);
+            this.boardList[boardListIndex].taskArray.splice(cardIndex, 1);
+        }
+    }
+
     ngOnInit() {
+        if (localStorage.getItem('boardList') != null) {
+            this.boardList = JSON.parse(localStorage.getItem('boardList'));
+        }
         this.getConnectedLists(this.boardList);
     }
 

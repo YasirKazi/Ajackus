@@ -25,13 +25,57 @@
             <div class="card-content">
                 <cdk-drop class="list-group list-group-flush" [id]="board.listName" [data]="board.taskArray"
                     [connectedTo]="filterListName(connectList, board.listName)" (dropped)="drop($event)">
-                    <div class="list-group-item list-group-item-primary card-list-column" *ngFor="let card of board.taskArray"
+                    <div class="list-group-item list-group-item-primary card-list-column" *ngFor="let card of board.taskArray; let cardIndex = index"
                         cdkDrag>
-                        <p class="mb-1"> {{ card.title | titlecase }} </p>
-                        <small class="text-muted"> {{ card.description }}</small>
+                        <p class="mb-1"> {{ card.title | titlecase }}
+                        </p>
+                        <div>
+                            <small class="text-muted"> {{ card.description }}</small>
+                        </div>
                         <small class="text-muted"> {{ card.dateAdded | date:'short' }}</small>
+                        <div class="row margin-0">
+                            <div class="col-sm-6" (mousedown)="archiveCard(cardIndex, i)">
+                                <span><i class="fas fa-archive"></i> Archive</span>
+                            </div>
+                            <div class="col-sm-6">
+                                <span><i class="fas fa-edit"></i> Rename</span>
+                            </div>
+                        </div>
+
                     </div>
                 </cdk-drop>
+            </div>
+        </div>
+        <div *ngIf="archiveList" class="archive-list-container">
+            <div class="card-list-container" *ngFor="let archive of archiveList; let i=index">
+                <div class="card-title">
+                    <h2>{{archive.title}}</h2>
+                    <span class="options-button">
+                        <div class="dropdown">
+                            <i class="fas fa-ellipsis-h dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a href="#" class="dropdown-item" data-toggle="modal" data-target="#cardModal">Add
+                                    Card...</a>
+                            </div>
+                        </div>
+                    </span>
+                </div>
+                <div class="card-content">
+                    <cdk-drop class="list-group list-group-flush" [id]="archive.listName" [data]="archive.taskArray"
+                        [connectedTo]="" (dropped)="drop($event)">
+                        <div class="list-group-item list-group-item-primary card-list-column" *ngFor="let card of archive.taskArray; let cardIndex = index"
+                            cdkDrag>
+                            <p class="mb-1"> {{ card.title | titlecase }}
+                            </p>
+                            <div>
+                                <small class="text-muted"> {{ card.description }}</small>
+                            </div>
+                            <small class="text-muted"> {{ card.dateAdded | date:'short' }}</small>
+                        </div>
+                    </cdk-drop>
+                </div>
             </div>
         </div>
     </div>
