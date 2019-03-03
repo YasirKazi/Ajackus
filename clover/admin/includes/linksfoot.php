@@ -1,0 +1,10 @@
+<!--Global JS-->
+<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/plugins/navgoco/jquery.navgoco.min.js"></script>
+<script src="assets/plugins/waypoints/waypoints.min.js"></script>
+<script src="assets/plugins/switchery/switchery.min.js"></script>
+<script src="assets/js/application.js"></script>
+<script src="assets/plugins/dataTables/js/jquery.dataTables.js"></script>
+<script src="assets/plugins/dataTables/js/dataTables.bootstrap.js"></script>
+<script src="assets/plugins/bootstrap-wysihtml5/js/wysihtml5-0.3.0.js"></script>
+<script src="assets/plugins/bootstrap-wysihtml5/js/bootstrap3-wysihtml5.js"></script>
