@@ -1,0 +1,11 @@
+.paymentBtn {
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 1em;
+    background: #212121;
+    text-decoration: none;
+}
+
+.paymentBtn:disabled {
+    background: #cccccc;
+}
