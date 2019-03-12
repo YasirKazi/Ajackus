@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\siteuser;
 
 class userDataController extends Controller
 {
@@ -34,7 +35,18 @@ class userDataController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'email' => 'required|unique:siteusers',  
+            'name' => 'required',  
+            'password' => 'required'
+         ]);
+         
+         $userDb = new siteuser;
+         $userDb->name = $request->input('name');
+         $userDb->email = $request->input('email');
+         $userDb->password = $request->input('password');
+         $userDb->save();
+         return ['success'=> true];
     }
 
     /**
@@ -43,9 +55,10 @@ class userDataController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+         $userdata = siteuser::where('email','=', $request->input('email'))->where('password', '=', $request->input('password'))->get();
+         return $userdata;
     }
 
     /**

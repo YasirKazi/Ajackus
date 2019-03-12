@@ -11,9 +11,14 @@
 |
 */
 
+//Category CRUD controller
 Route::resource('category', 'productCategoryController');
 
+//Product CRUD controller
 Route::resource('product', 'productController');
+
+//Purchase Order CRUD controller
+Route::resource('orders', 'purchaseOrderController');
 
 Route::get('/', function () {
     return view('home');

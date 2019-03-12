@@ -18,6 +18,7 @@ export class CheckoutComponent implements OnInit {
   userId: any = null;
   cod: boolean = false;
   showPaymentMethod: boolean = false;
+  orderTotal: number = 0;
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
@@ -44,31 +45,41 @@ export class CheckoutComponent implements OnInit {
   checkOut() {
     if (!this.userId) {
       this.router.navigate(['/register']);
+
     } else {
-      var url = '/admin/services/place_order.php';
+      var orderTotal = 0;
       var thisObj = this;
-      var data = {
-        'userId': this.userId,
-        'name': this.name,
-        'mobile': this.mobile,
-        'landMark': this.landMark,
-        'town': this.town,
-        'adressType': this.adressType,
-        'orderDetail': this.productObj
+      for (var i = 0; i < thisObj.productObj.length; i++) {
+        orderTotal = parseFloat(orderTotal + thisObj.productObj[i].price);
       }
+      this.orderTotal = orderTotal;
+
+
+      var url = '/api/order/confirm';
+      var thisObj = this;
+      var data = 'userId=' + this.userId +
+        '&name=' + this.name +
+        '&mobile=' + this.mobile +
+        '&landmark=' + this.landMark +
+        '&town=' + this.town +
+        '&adressType=' + this.adressType +
+        '&orderTotal=' + this.orderTotal +
+        '&orderDetail=' + JSON.stringify(this.productObj);
+
       return this.http
         .post(url, data, {
-          headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Access-Control-Allow-Origin': '*', 'responseType': 'text' }
         })
         .subscribe((res: any) => {
           this.checkOutResponse(res);
         });
     }
   }
+
   checkOutResponse(res) {
-    if (res.data[0]) {
+    if (res) {
       alert('Hurray! your Order has been placed Successfully');
-      sessionStorage.clear();
+      sessionStorage.removeItem('productObj');
       this.router.navigate(['/home']);
     }
   }

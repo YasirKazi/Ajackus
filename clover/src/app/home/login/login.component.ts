@@ -20,15 +20,13 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser() {
-    var url = '/admin/services/loginUser.php';
+    var url = '/api/user/login';
     var thisObj = this;
-    var data = {
-      'email': this.email,
-      'password': this.password
-    }
+    var data = 'email=' + this.email + '&password=' + this.password;
+
     return this.http
       .post(url, data, {
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Access-Control-Allow-Origin': '*' }
       })
       .subscribe((res: any) => {
         this.loginResponse(res);
@@ -36,8 +34,8 @@ export class LoginComponent implements OnInit {
   }
 
   loginResponse(res) {
-    if (res.data[0]) {
-      sessionStorage.setItem('userId', res.data[0].user_id);
+    if (res) {
+      sessionStorage.setItem('userId', res[0].id);
       this.router.navigate(['/home']);
     }
   }

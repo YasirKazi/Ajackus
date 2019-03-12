@@ -19,16 +19,13 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser() {
-    var url = '/admin/services/registerUser.php';
+    var url = '/api/user/register';
     var thisObj = this;
-    var data = {
-      'name': this.name,
-      'email': this.email,
-      'password': this.password
-    }
+    var data = 'name=' + this.name + '&email=' + this.email + '&password=' + this.password;
+
     return this.http
       .post(url, data, {
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Access-Control-Allow-Origin': '*' }
       })
       .subscribe((res: any) => {
         this.registerResponse(res);
@@ -36,7 +33,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registerResponse(res) {
-    if (res.data[0]) {
+    if (res) {
       alert('Congratulations! You are now registered with us');
       this.router.navigate(['/home']);
     }
