@@ -24,7 +24,7 @@ export class ProductComponent implements OnInit {
   }
 
   getProductData() {
-    var url = '/admin/services/getProduct.php?category=' + this.category;
+    var url = '/api/getProduct/' + this.category;
     var thisObj = this;
 
     return this.http
@@ -37,8 +37,8 @@ export class ProductComponent implements OnInit {
   }
 
   categoryResponse(response) {
-    if (response && response.data) {
-      this.productObj = response.data;
+    if (response) {
+      this.productObj = response;
     }
   }
 

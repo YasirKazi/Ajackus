@@ -20,7 +20,7 @@ export class GenericHeaderComponent implements OnInit {
   }
 
   getCateGoryData() {
-    var url = '/admin/services/getCategoryData.php';
+    var url = '/api/category';
     var thisObj = this;
 
     return this.http
@@ -33,8 +33,8 @@ export class GenericHeaderComponent implements OnInit {
   }
 
   categoryResponse(response) {
-    if (response && response.data) {
-      this.categoryObj = response.data;
+    if (response) {
+      this.categoryObj = response;
     }
   }
 
