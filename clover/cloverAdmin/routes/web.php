@@ -20,6 +20,11 @@ Route::resource('product', 'productController');
 //Purchase Order CRUD controller
 Route::resource('orders', 'purchaseOrderController');
 
+//Login controller
+Route::get('/login', 'MainController@index');
+Route::post('/login/checkLogin', 'MainController@checkLogin');
+Route::get('/login/successLogin', 'MainController@successLogin');
+
 Route::get('/', function () {
     return view('home');
 });
